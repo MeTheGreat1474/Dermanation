@@ -20,8 +20,11 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="90dp"
-        android:text="Cancel"
+        android:layout_marginEnd="60dp"
+        android:text="CANCEL"
+        android:textColor="#E91E63"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView35"
         app:layout_constraintEnd_toStartOf="@+id/textView35"
         app:layout_constraintTop_toTopOf="@+id/textView35" />
 
@@ -29,8 +32,9 @@
         android:id="@+id/textView35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="Edit Profile"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,20 +42,28 @@
 
     <TextView
         android:id="@+id/textView36"
-        android:layout_width="33dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="90dp"
-        android:text="Save"
+        android:layout_width="48dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="60dp"
+        android:text="SAVE"
+        android:textColor="#4CAF50"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView35"
         app:layout_constraintStart_toEndOf="@+id/textView35"
         app:layout_constraintTop_toTopOf="@+id/textView35" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="119dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_width="169dp"
+        android:layout_height="162dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_image"
+        android:clipToOutline="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView35"
+        tools:srcCompat="@drawable/profile_picture" />
 
     <TextView
         android:id="@+id/textView37"
@@ -67,7 +79,7 @@
         android:id="@+id/radioGroup"
         android:layout_width="122dp"
         android:layout_height="107dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@+id/textView37"
         app:layout_constraintTop_toBottomOf="@+id/textView37">
 
@@ -75,13 +87,15 @@
             android:id="@+id/radioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Male" />
+            android:text="Male"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Female" />
+            android:text="Female"
+            android:textStyle="bold" />
     </RadioGroup>
 
     <TextView
@@ -96,23 +110,27 @@
 
     <EditText
         android:id="@+id/editTextText2"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_width="245dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
+        android:hint="   01/01/2003"
         android:inputType="text"
-        android:text="01/01/2003"
-        android:textSize="16sp"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="213dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="250dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
+        android:hint="   +6012345678"
         android:inputType="phone"
-        android:text="+6012345678"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/textView38"
         app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
@@ -129,13 +147,15 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="250dp"
         android:layout_height="60dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@+id/textView43"
         app:layout_constraintTop_toBottomOf="@+id/textView43">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="hint" />
+            android:layout_height="33dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="   Enter Address"
+            android:textSize="13sp" />
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

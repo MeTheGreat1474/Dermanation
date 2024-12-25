@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "107050221989",
+    "project_id": "dermanation-firebase",
+    "storage_bucket": "dermanation-firebase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107050221989:android:a8c743c4411cffe966684c",
+        "android_client_info": {
+          "package_name": "com.example.dermanation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUntlMCm7SssBB2xnMl6a45cgwkokJ3xQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

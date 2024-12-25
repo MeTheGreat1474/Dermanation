@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Verify user as Receiver"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,16 +22,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Enter NRIC Number :"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText3"
-        tools:layout_editor_absoluteX="47dp" />
+        android:text="NRIC Number"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/editTextText3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
 
     <EditText
         android:id="@+id/editTextNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="272dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
+        android:hint="   Enter Receiver NRIC"
         android:inputType="number"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/textView40"
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
@@ -38,20 +44,24 @@
         android:id="@+id/textView41"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="100dp"
-        android:text="Enter Full Name"
+        android:text="Full Name"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="272dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
+        android:hint="   Enter Receiver Name "
         android:inputType="text"
-        android:text="Name"
         android:textColor="#56000000"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/textView41"
         app:layout_constraintTop_toBottomOf="@+id/textView41" />
 
@@ -61,7 +71,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="8dp"
-        android:text="Choose Family Type"
+        android:text="Family Type"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup2"
         app:layout_constraintStart_toStartOf="@+id/editTextNumber"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
@@ -77,13 +88,15 @@
             android:id="@+id/radioButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="B40" />
+            android:text="B40"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/radioButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="M40" />
+            android:text="M40"
+            android:textStyle="bold" />
     </RadioGroup>
 
     <TextView
@@ -91,16 +104,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Enter total family household income"
+        android:text="Total Family Household Income"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/radioGroup2"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="272dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_text_border"
         android:ems="10"
+        android:hint="   Enter Household Income"
         android:inputType="numberDecimal"
+        android:textSize="13sp"
         app:layout_constraintStart_toStartOf="@+id/textView44"
         app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
@@ -111,23 +129,42 @@
         android:layout_marginTop="24dp"
         android:text="Attach Related Documents (exp: Copy of IC ,Payslip)"
         android:textAlignment="viewStart"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/editTextNumberDecimal"
         app:layout_constraintTop_toBottomOf="@+id/editTextNumberDecimal" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        style="@style/CustomButtonStyle"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="VERIFY"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="666dp" />
+        android:layout_marginBottom="32dp"
+        android:text="SUBMIT"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView46"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
-        android:text="Cancel"
+        android:layout_marginEnd="35dp"
+        android:text="CANCEL"
+        android:textColor="#E91E63"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView39"
         app:layout_constraintEnd_toStartOf="@+id/textView39"
         app:layout_constraintTop_toTopOf="@+id/textView39" />
+
+    <TextView
+        android:id="@+id/textView71"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Attach Documents"
+        android:textColor="#00BCD4"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView45"
+        app:layout_constraintTop_toBottomOf="@+id/textView45" />
 </androidx.constraintlayout.widget.ConstraintLayout>
