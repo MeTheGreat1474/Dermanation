@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
-    Button button;
+    Button button, profile_page;
 
     TextView textView;
 
@@ -30,13 +30,31 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout);
         textView = findViewById(R.id.user_details);
+        profile_page = findViewById(R.id.profile_page);
         user = auth.getCurrentUser();
+
+        if (user==null) {
+            Intent intent = new Intent(getApplicationContext(), SignIn.class);
+            startActivity(intent);
+            finish();
+        } else {
+            textView.setText(user.getEmail());
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        profile_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
                 startActivity(intent);
                 finish();
             }

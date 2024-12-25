@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dermanation</string>
+    <string name="return_icon">back</string>
 </resources>
