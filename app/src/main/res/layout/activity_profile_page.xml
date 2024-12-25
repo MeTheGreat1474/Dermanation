@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfilePage">
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="165dp"
+        android:text="Aida Sophea"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Email"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="example1@gmail.com"
+        app:layout_constraintStart_toStartOf="@+id/textView21"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Birth Date"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/user_email"
+        app:layout_constraintTop_toBottomOf="@+id/user_email" />
+
+    <TextView
+        android:id="@+id/user_birth_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="08/01/2024"
+        app:layout_constraintStart_toStartOf="@+id/textView23"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Gender"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/user_birth_date"
+        app:layout_constraintTop_toBottomOf="@+id/user_birth_date" />
+
+    <TextView
+        android:id="@+id/user_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Female"
+        app:layout_constraintStart_toStartOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/textView25" />
+
+    <TextView
+        android:id="@+id/textView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Phone Number"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/user_gender"
+        app:layout_constraintTop_toBottomOf="@+id/user_gender" />
+
+    <TextView
+        android:id="@+id/user_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="011-29039100"
+        app:layout_constraintStart_toStartOf="@+id/textView27"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Address"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/user_phone_number"
+        app:layout_constraintTop_toBottomOf="@+id/user_phone_number" />
+
+    <TextView
+        android:id="@+id/user_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kolej Kediaman Kinabalu, University Malaya"
+        app:layout_constraintStart_toStartOf="@+id/textView29"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="134dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/rounded_image"
+        android:scaleType="centerCrop"
+        android:clipToOutline="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile_picture" />
+
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="RECEIVER"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/user_name"
+        app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="Profile Page"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EDIT"
+        android:textColor="#2196F3"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toEndOf="@+id/textView32"
+        app:layout_constraintTop_toTopOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/return_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView32"
+        app:layout_constraintEnd_toStartOf="@+id/textView32"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView32" />
+
+    <TextView
+        android:id="@+id/receiver_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="PENDING"
+        android:textColor="#FF9800"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView31"
+        app:layout_constraintStart_toEndOf="@+id/textView31"
+        app:layout_constraintTop_toTopOf="@+id/textView31" />
+
+    <Button
+        android:id="@+id/verify_receiver"
+        style="@style/CustomButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="VERIFY RECEIVER"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/receiver_status"
+        app:layout_constraintStart_toStartOf="@+id/textView31"
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

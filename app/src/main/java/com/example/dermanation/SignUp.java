@@ -2,6 +2,7 @@ package com.example.dermanation;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,8 @@ public class SignUp extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     TextView textView;
+
+    SwitchCompat applyReceiver;
 
     @Override
     public void onStart() {
@@ -52,11 +56,12 @@ public class SignUp extends AppCompatActivity {
         editConfirmPassword = findViewById(R.id.confirmPassword);
         buttonReg = findViewById(R.id.btn_register);
         textView = findViewById(R.id.loginNow);
+        applyReceiver = findViewById(R.id.isReceiver);
 
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignIn.class);
                 startActivity(intent);
                 finish();
             }
@@ -70,6 +75,7 @@ public class SignUp extends AppCompatActivity {
                 password = String.valueOf(editTextPassword.getText());
                 confirmPassword = String.valueOf(editConfirmPassword.getText());
                 name = String.valueOf(editName.getText());
+                boolean receiverStatus = applyReceiver.isChecked();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(SignUp.this, "Enter email", Toast.LENGTH_LONG).show();
@@ -112,7 +118,7 @@ public class SignUp extends AppCompatActivity {
                                       DatabaseReference userRef = database.getReference("Users").child(userId);
 
                                       // Create a user object to store data
-                                      User newUser = new User(name,email);
+                                      User newUser = new User(name,email, receiverStatus);
                                       userRef.setValue(newUser)
                                               .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                   @Override

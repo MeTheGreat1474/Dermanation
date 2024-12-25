@@ -15,6 +15,13 @@
         android:text="Hello World!" />
 
     <Button
+        android:text="Profile Page"
+        android:id="@+id/profile_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
         android:text="Logout"
         android:id="@+id/logout"
         android:layout_width="wrap_content"
