@@ -30,6 +30,8 @@ public class ProfilePage extends AppCompatActivity {
 
     DatabaseReference userRef;
 
+    Boolean isReceiver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +59,24 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
+        edit_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), EditProfile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        btn_verify_receiver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), VerifyReceiver.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         if (user==null) {
             Intent intent = new Intent(getApplicationContext(), SignIn.class);
             startActivity(intent);
@@ -73,6 +93,7 @@ public class ProfilePage extends AppCompatActivity {
                         String name = snapshot.child("name").getValue(String.class);
                         String email = snapshot.child("email").getValue(String.class);
                         Boolean isReceiverValue = snapshot.child("applyReceiver").getValue(Boolean.class);
+                        String receiverStatus = snapshot.child("receiverStatus").getValue(String.class);
 
                         // Handle other fields
                         String phoneNumber = snapshot.child("phone_number").getValue(String.class);
@@ -83,11 +104,23 @@ public class ProfilePage extends AppCompatActivity {
                         // Assign to TextViews
                         user_name.setText(name != null ? name : "N/A");
                         user_email.setText(email != null ? email : "N/A");
-                        receiver_status.setText(isReceiverValue != null && isReceiverValue ? "Receiver" : "Not Receiver");
+                        if (isReceiverValue != null && isReceiverValue) {
+                            receiver_status.setText(receiverStatus != null ? receiverStatus : "Unverified");
+                        } else {
+                            receiver_status.setText("Unappliccable");
+                        }
+//                        receiver_status.setText(isReceiverValue != null && isReceiverValue ? "Receiver" : "Not Receiver");
                         user_phone_number.setText(phoneNumber != null ? phoneNumber : "-");
                         user_address.setText(address != null ? address : "-");
                         user_birth_date.setText(birthDate != null ? birthDate : "-");
                         user_gender.setText(gender != null ? gender : "-");
+
+                        // Show or hide the button based on isReceiverValue
+                        if (isReceiverValue != null && isReceiverValue) {
+                            btn_verify_receiver.setVisibility(View.VISIBLE); // Hide the button
+                        } else {
+                            btn_verify_receiver.setVisibility(View.GONE); // Show the button
+                        }
                     } else {
                         Toast.makeText(ProfilePage.this, "User data not found!", Toast.LENGTH_SHORT).show();
                     }
