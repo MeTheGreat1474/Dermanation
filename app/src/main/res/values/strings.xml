@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dermanation</string>
     <string name="return_icon">back</string>
+    <string name="text29.99">  <strike>RM 29.99</strike>  </string>
 </resources>

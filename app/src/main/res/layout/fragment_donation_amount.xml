@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:gravity="center"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/donateNowPageTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Donate Now"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:gravity="center"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/donationAmountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Donation Amount"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+
+        <Button
+            android:id="@+id/paymentMethodButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Payment Method"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/rm5button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="RM 5"
+        style="@style/CustomButtonStyle3"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/rm10button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        style="@style/CustomButtonStyle3"
+        android:text="RM 10" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/rm50button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        style="@style/CustomButtonStyle3"
+        android:text="RM 50" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/rm100button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        style="@style/CustomButtonStyle3"
+        android:text="RM 100" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/otherAmountText"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Other Amount"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/otherAmountEditText"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="number"
+        android:background="@drawable/rectangle"
+        android:textColor="@color/black"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/makePaymentButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Make Payment"
+        style="@style/CustomButtonStyle"/>
+</LinearLayout>
