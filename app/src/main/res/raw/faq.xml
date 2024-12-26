@@ -1,0 +1,10 @@
+<faq>
+    <item>
+        <question>What is Lorem Ipsum?</question>
+        <answer>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</answer>
+    </item>
+    <item>
+        <question>Why do we use it?</question>
+        <answer>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</answer>
+    </item>
+</faq>
