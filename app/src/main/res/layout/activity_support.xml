@@ -23,7 +23,7 @@
         android:layout_height="578dp"
         android:orientation="vertical"
         android:paddingBottom="50dp"
-        android:paddingTop="50dp">
+        android:paddingTop="20dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/CVHotlineMy"
