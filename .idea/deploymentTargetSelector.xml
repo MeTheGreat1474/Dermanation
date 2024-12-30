@@ -11,10 +11,10 @@
       <SelectionState runConfigName="Dashboard">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Help">
+      <SelectionState runConfigName="Support">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Support">
+      <SelectionState runConfigName="SignIn">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
