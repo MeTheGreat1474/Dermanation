@@ -20,7 +20,7 @@ public class HomeButtonFragment extends Fragment {
 
         AppCompatButton homeButton = view.findViewById(R.id.BTHome);
         homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), Dashboard.class);
+            Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
         });
 
