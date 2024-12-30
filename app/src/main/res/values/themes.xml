@@ -6,4 +6,5 @@
     </style>
 
     <style name="Theme.Dermanation" parent="Base.Theme.Dermanation" />
+    <style name="Theme.NavGraph" parent="Theme.MaterialComponents.DayNight.NoActionBar"></style>
 </resources>

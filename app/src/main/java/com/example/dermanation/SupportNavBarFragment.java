@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
-public class NavBarFragment extends Fragment {
+public class SupportNavBarFragment extends Fragment {
 
     @Nullable
     @Override

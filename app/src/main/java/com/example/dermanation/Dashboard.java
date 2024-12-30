@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,9 +17,14 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.xmlpull.v1.XmlPullParser;
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +56,13 @@ public class Dashboard extends AppCompatActivity {
         for (Story story : stories) {
             lvStories.addView(createCardView(story.getTitle(), story.getDescription(), story.getImageUrl(), story.getUrl()));
         }
+
+        // Load BottomNavigationFragment
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, new BottomNavigationFragment());
+        fragmentTransaction.commit();
+
     }
 
     private CardView createCardView(String title, String description, String imageUrl, String url) {
@@ -63,25 +76,21 @@ public class Dashboard extends AppCompatActivity {
         tvTitle.setText(title);
         tvDescription.setText(description);
 
-        // Set bottom margin and fixed height
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                400 // Set the desired height here in pixels
+                400
         );
-        layoutParams.setMargins(0, 0, 0, 20); // 16dp bottom margin
+        layoutParams.setMargins(0, 0, 0, 20);
         cardView.setLayoutParams(layoutParams);
 
-        // Set the ScaleType to CENTER_CROP to zoom in the image
         imgCard.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-        // Load the image from drawable resource
         int imageResource = getResources().getIdentifier(imageUrl, "drawable", getPackageName());
         imgCard.setImageResource(imageResource);
 
-        // Set height for ImageView to match CardView height
         LinearLayout.LayoutParams imgLayoutParams = new LinearLayout.LayoutParams(
                 300,
-                ViewGroup.LayoutParams.MATCH_PARENT // Set the desired height here in pixels
+                ViewGroup.LayoutParams.MATCH_PARENT
         );
         imgCard.setLayoutParams(imgLayoutParams);
 

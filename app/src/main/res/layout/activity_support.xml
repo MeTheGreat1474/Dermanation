@@ -15,7 +15,7 @@
         android:id="@+id/fragment_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.example.dermanation.NavBarFragment" />
+        android:name="com.example.dermanation.SupportNavBarFragment" />
 
     <LinearLayout
         android:id="@+id/LLSupportCard"
