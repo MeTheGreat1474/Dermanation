@@ -1,84 +1,52 @@
 package com.example.dermanation;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.LoginFilter;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.xmlpull.v1.XmlPullParser;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-
-    FirebaseAuth auth;
-
-    Button button, profile_page;
-
-    TextView textView;
-
-    FirebaseUser user;
+public class Dashboard extends AppCompatActivity {
 
     private List<Story> stories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        auth = FirebaseAuth.getInstance();
-//        button = findViewById(R.id.logout);
-//        textView = findViewById(R.id.user_details);
-//        profile_page = findViewById(R.id.profile_page);
-        user = auth.getCurrentUser();
-
-//        if (user==null) {
-//            Intent intent = new Intent(getApplicationContext(), SignIn.class);
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            textView.setText(user.getEmail());
-//        }
-//
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                Intent intent = new Intent(getApplicationContext(), SignIn.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//        profile_page.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_dashboard);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.LLDashboard), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         ImageView ivSupport = findViewById(R.id.IVSupport);
         ivSupport.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Help.class);
+            Intent intent = new Intent(Dashboard.this, Help.class);
             startActivity(intent);
         });
 
