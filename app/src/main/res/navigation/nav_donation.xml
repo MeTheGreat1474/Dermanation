@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_donation"
+    app:startDestination="@id/donationMainFragment">
+
+    <fragment
+        android:id="@+id/donationDetailFragment"
+        android:name="com.example.dermanation.DonationDetailFragment"
+        android:label="Donation Detail"
+        tools:layout="@layout/fragment_donation_detail" >
+        <action
+            android:id="@+id/action_donationDetailFragment_to_donationAmountFragment"
+            app:destination="@id/donationAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationMainFragment"
+        android:name="com.example.dermanation.DonationMainFragment"
+        android:label="DonationMainFragment" >
+        <action
+            android:id="@+id/action_donationMainFragment_to_donationDetailFragment2"
+            app:destination="@id/donationDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationAmountFragment"
+        android:name="com.example.dermanation.DonationAmountFragment"
+        android:label="DonationAmountFragment" >
+        <action
+            android:id="@+id/action_donationAmountFragment_to_donationPaymentFragment"
+            app:destination="@id/donationPaymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/donationPaymentFragment"
+        android:name="com.example.dermanation.DonationPaymentFragment"
+        android:label="DonationPaymentFragment" >
+        <action
+            android:id="@+id/action_donationPaymentFragment_to_donationAmountFragment"
+            app:destination="@id/donationAmountFragment" />
+        <action
+            android:id="@+id/action_donationPaymentFragment_to_donationMainFragment"
+            app:destination="@id/donationMainFragment" />
+    </fragment>
+</navigation>

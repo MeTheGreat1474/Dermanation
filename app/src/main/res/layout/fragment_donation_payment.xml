@@ -2,24 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="30dp"
+    android:background="#FFFFFF"
     android:gravity="center"
-    android:background="#FFFFFF">
+    android:orientation="vertical"
+    android:padding="30dp">
 
     <TextView
         android:id="@+id/donateNowPageTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Donate Now"
-        android:textSize="20sp"
         android:textColor="@color/black"
-        android:gravity="center"/>
+        android:textSize="20sp" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="0.5" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,24 +31,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:text="Donation Amount"
-            android:textColor="@color/black"
-            android:background="@android:color/transparent"/>
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/paymentMethodButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:text="Payment Method"
-            android:textColor="@color/black"
-            android:background="@android:color/transparent"/>
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="0.5" />
 
     <TextView
         android:id="@+id/adText4"
@@ -60,16 +62,18 @@
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="0.5" />
 
 
     <Button
         android:id="@+id/masterButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#A8A9AD"
+        android:drawableLeft="@drawable/img_2"
         android:text="Master Card"
-        style="@style/CustomButtonStyle3"
-        android:drawableLeft="@drawable/img_2" />
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
     <Space
         android:layout_width="match_parent"
@@ -80,9 +84,11 @@
         android:id="@+id/visaButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#A8A9AD"
+        android:drawableLeft="@drawable/img_3"
         android:text="Visa Card"
-        style="@style/CustomButtonStyle3"
-        android:drawableLeft="@drawable/img_3" />
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
     <Space
         android:layout_width="match_parent"
@@ -93,9 +99,11 @@
         android:id="@+id/tngButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Touch ‘n GO eWallet"
+        android:backgroundTint="#A8A9AD"
         android:drawableLeft="@drawable/img_4"
-        style="@style/CustomButtonStyle3"/>
+        android:text="Touch ‘n GO eWallet"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
 
     <Space
         android:layout_width="match_parent"
@@ -106,6 +114,14 @@
         android:id="@+id/confirmButton"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FF4081"
         android:text="Confirm"
-        style="@style/CustomButtonStyle" />
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <FrameLayout
+        android:id="@+id/adsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 </LinearLayout>
