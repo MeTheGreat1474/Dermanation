@@ -82,6 +82,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        ImageView ivVolunteer = findViewById(R.id.IVVolunteer);
+        ivVolunteer.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, VolunteerMain.class);
+            startActivity(intent);
+        });
+
         stories = parseStoriesXml();
 
         LinearLayout lvStories = findViewById(R.id.LVStories);
