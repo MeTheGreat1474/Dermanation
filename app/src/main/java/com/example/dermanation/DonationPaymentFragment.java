@@ -146,7 +146,7 @@ public class DonationPaymentFragment  extends Fragment {
                     @Override
                     public void onSuccess() {
                         // Navigate after successful database update
-                        Navigation.findNavController(view).navigate(R.id.donationMainFragment);
+                        Navigation.findNavController(view).navigate(R.id.navigation_home);
                     }
 
                     @Override

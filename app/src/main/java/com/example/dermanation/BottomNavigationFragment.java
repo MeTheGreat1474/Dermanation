@@ -33,7 +33,11 @@ public class BottomNavigationFragment extends Fragment {
                     return true;
                 } else if (itemId == R.id.navigation_setting) {
                     // Navigate to Help later replace with Settings
-                    startActivity(new Intent(getActivity(), Help.class));
+                    startActivity(new Intent(getActivity(), Setting.class));
+                    return true;
+                } else if (itemId == R.id.navigation_donate) {
+                    // Navigate to Help later replace with Settings
+                    startActivity(new Intent(getActivity(), DonationActivity.class));
                     return true;
                 }
                 return false;

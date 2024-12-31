@@ -18,16 +18,16 @@ public class DonationActivity extends AppCompatActivity {
 
 //        DonationFirebase donation = new DonationFirebase(
 //                null,
-//                "Help Flood Victim",
-//                R.drawable.img,
+//                "Help Palestine",
+//                R.drawable.img_6,
 //                5000,
 //                50,
-//                R.drawable.img_1,
-//                "JomDonate",
-//                "Tabung Kecemasan Untuk Mangsa Banjir" +
+//                R.drawable.img_7,
+//                "Peduli Insan",
+//                "Tabung Kecemasan Untuk Rakyat Palestine" +
 //                        "Assalammualaikum dan Salam Sejahtera," +
-//                        "Sehingga hari ini, kami masih menerima banyak aduan dan rintihan dari mangsa banjir yang memerlukan pelbagai bentuk bantuan daripada kita semua. Ramai yang terjejas serta mengalami kemusnahan tempat tinggal serta harta benda. Tidak kurang juga yang terputus bekalan makanan, kehilangan wang ringgit dan ada yang terpaksa meninggalkan kediaman sehelai sepinggang." +
-//                        "Atas keprihatinan semua, kami ingin membuka ruang kepada anda untuk menderma dan menjayakan kempen Derma Untuk Mangsa Banjir melalui platform Jomdonate.com."
+//                        "Ayuh semua, sokongan dan sumbangan kita bukan sahaja menyelamatkan mereka, malah menjadikan musim sejuk mereka, musim yang sangat indah." +
+//                        "wKita mungkin belum mampu untuk menyelesaikan krisis yang berlaku di sana. Sekurang-kurangnya, kehidupan mereka hari ini, adalah lebih baik daripada yang sebelumnya."
 //        );
 //
 //        DonationRepository repository = new DonationRepository();
