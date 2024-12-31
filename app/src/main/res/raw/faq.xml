@@ -1,0 +1,74 @@
+<faq>
+    <item>
+        <question>What is this app about?</question>
+        <answer>This app is designed to connect people who want to contribute to reducing poverty with those in need. Users can donate to non-governmental organizations (NGOs), sign up as beneficiaries for support, and participate in volunteering opportunities.</answer>
+    </item>
+    <item>
+        <question>How does this app align with SDG 1 (No Poverty)?</question>
+        <answer>The app promotes SDG 1 by fostering donations, providing support for underprivileged communities, and encouraging volunteerism to help reduce poverty and improve livelihoods.</answer>
+    </item>
+    <item>
+        <question>Who can use this app?</question>
+        <answer>Anyone can sign up, whether you want to donate, volunteer, or seek assistance as a beneficiary.</answer>
+    </item>
+    <item>
+        <question>How do I create an account?</question>
+        <answer>Tap the "Sign Up" button on the home screen, provide the required details, and follow the steps to verify your account.</answer>
+    </item>
+    <item>
+        <question>Can I customize my profile?</question>
+        <answer>Yes, after logging in, you can edit your profile details, upload a profile picture, and set preferences in the settings menu.</answer>
+    </item>
+    <item>
+        <question>What if I forget my password?</question>
+        <answer>Click "Forgot Password" on the login screen and follow the instructions to reset your password.</answer>
+    </item>
+<!--    <item>-->
+<!--        <question>How can I make a donation?</question>-->
+<!--        <answer>Navigate to the "Donate" page, select an NGO or cause you wish to support, and follow the payment instructions.</answer>-->
+<!--    </item>-->
+    <item>
+        <question>Are my donations secure?</question>
+        <answer>Yes, we use secure payment gateways to ensure your transactions are safe.</answer>
+    </item>
+<!--    <item>-->
+<!--        <question>Can I track my donations?</question>-->
+<!--        <answer>Yes, your donation history is available in your profile under the "My Contributions" section.</answer>-->
+<!--    </item>-->
+    <item>
+        <question>How do I sign up as a beneficiary?</question>
+        <answer>Choose the "Sign Up as Beneficiary" option during registration or from your account settings if you already have an account.</answer>
+    </item>
+    <item>
+        <question>What kind of support can I expect as a beneficiary?</question>
+        <answer>Beneficiaries can receive donations, participate in community programs, and get assistance through volunteer activities.</answer>
+    </item>
+    <item>
+        <question>How will I be notified about support?</question>
+        <answer>Notifications will be sent via the app, and you can view updates on your dashboard.</answer>
+    </item>
+    <item>
+        <question>How can I participate in volunteer activities?</question>
+        <answer>Go to the "Volunteer" page to browse available opportunities. Sign up for events that align with your interests and availability.</answer>
+    </item>
+    <item>
+        <question>Can organizations post volunteer opportunities?</question>
+        <answer>Yes, NGOs and community groups can submit volunteer opportunities for approval to be listed on the app.</answer>
+    </item>
+    <item>
+        <question>What should I do if I experience a technical issue?</question>
+        <answer>Use the "Contact Support" feature in the settings menu or email our support team at [support_email@example.com].</answer>
+    </item>
+    <item>
+        <question>Is there an offline mode?</question>
+        <answer>Some features, such as browsing information, may be available offline. However, actions like donations or account updates require an internet connection.</answer>
+    </item>
+    <item>
+        <question>Is my personal information safe?</question>
+        <answer>Yes, we prioritize user privacy and comply with data protection regulations. Please read our Privacy Policy for more details.</answer>
+    </item>
+    <item>
+        <question>Can I delete my account?</question>
+        <answer>Yes, go to the settings menu and select "Delete Account." Note that this action is irreversible.</answer>
+    </item>
+</faq>
