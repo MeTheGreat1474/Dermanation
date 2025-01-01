@@ -29,6 +29,11 @@ public class Setting extends AppCompatActivity {
             startActivity(new Intent(Setting.this, Support.class));
         });
 
+        LinearLayout accountButton = findViewById(R.id.accountButton);
+        accountButton.setOnClickListener(v -> {
+            startActivity(new Intent(Setting.this, ProfilePage.class));
+        });
+
         LinearLayout signOutButton = findViewById(R.id.signOutButton);
         signOutButton.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();

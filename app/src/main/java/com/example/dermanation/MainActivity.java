@@ -88,6 +88,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        ImageView ivProfile = findViewById(R.id.IVProfile);
+        ivProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, ProfilePage.class);
+            startActivity(intent);
+        });
+
         stories = parseStoriesXml();
 
         LinearLayout lvStories = findViewById(R.id.LVStories);
