@@ -18,16 +18,13 @@ public class DonationActivity extends AppCompatActivity {
 
 //        DonationFirebase donation = new DonationFirebase(
 //                null,
-//                "Help Palestine",
-//                R.drawable.img_6,
-//                5000,
-//                50,
-//                R.drawable.img_7,
+//                "Help Welfare House",
+//                R.drawable.img_9,
+//                2000,
+//                20,
+//                R.drawable.img_10,
 //                "Peduli Insan",
-//                "Tabung Kecemasan Untuk Rakyat Palestine" +
-//                        "Assalammualaikum dan Salam Sejahtera," +
-//                        "Ayuh semua, sokongan dan sumbangan kita bukan sahaja menyelamatkan mereka, malah menjadikan musim sejuk mereka, musim yang sangat indah." +
-//                        "wKita mungkin belum mampu untuk menyelesaikan krisis yang berlaku di sana. Sekurang-kurangnya, kehidupan mereka hari ini, adalah lebih baik daripada yang sebelumnya."
+//                "Care For Malaysia is a charity organization, your generous donations enable the Care For Malaysia Center to cover monthly living and operational expenses. Your kind support can help to cover the monthly expenses of Care for Malaysia Society "
 //        );
 //
 //        DonationRepository repository = new DonationRepository();

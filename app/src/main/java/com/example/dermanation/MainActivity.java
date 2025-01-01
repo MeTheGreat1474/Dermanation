@@ -94,6 +94,13 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        ImageView ivDonate = findViewById(R.id.IVDonate);
+        ivDonate.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DonationActivity.class);
+            startActivity(intent);
+        });
+
+
         stories = parseStoriesXml();
 
         LinearLayout lvStories = findViewById(R.id.LVStories);

@@ -120,16 +120,16 @@ public class DonationMainFragment extends Fragment implements DonationListener {
         donationsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                donationList.clear();  // Clear the existing data
+                donationList.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Donation donation = snapshot.getValue(Donation.class);
                     if (donation != null) {
-                        donationList.add(donation); // Add the donation to the list
+                        donationList.add(donation);
                     }
                 }
 
-                donationAdapter.notifyDataSetChanged(); // Notify the adapter to update the RecyclerView
+                donationAdapter.notifyDataSetChanged();
             }
 
             @Override
