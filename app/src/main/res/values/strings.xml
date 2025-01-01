@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Dermanation</string>
     <string name="return_icon">back</string>
+    <string name="text29.99">  <strike>RM 29.99</strike>  </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

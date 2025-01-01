@@ -1,0 +1,21 @@
+<stories>
+    <story>
+        <title>MERCY Malaysia Flood Response: Kelantan</title>
+        <description>As floodwaters recede, many areas in Kelantan are now grappling with the aftermath and its far-reaching impacts. Extensive clean-up efforts are urgently needed across numerous locations, particularly at critical facilities like klinik kesihatan. Maintaining hygiene in these healthcare centres is vital to ensure they can continue to operate safely and provide essential medical services. Without swift action, the risk of disease outbreaks and disruptions to patient care will increase. Community involvement and coordinated support from authorities will be key in restoring these facilities to full functionality.
+        </description>
+        <imageUrl>story_mercy_kelantan</imageUrl>
+        <url>https://mercy.org.my/happening-now/</url>
+    </story>
+    <story>
+        <title>Gaza: Ongoing civilian casualties amid aid challenges</title>
+        <description>Civilian casualties and injuries continue to be reported across Gaza due to the ongoing hostilities, with most families unable to afford basic food as the humanitarian situation deteriorates, a UN spokesperson reported on Thursday. In Lebanon, the UN peacekeeping mission in the south of the country urged both Israel and Lebanon to prevent any actions that could threaten the fragile ceasefire.</description>
+        <imageUrl>story_un_gaza</imageUrl>
+        <url>https://news.un.org/en/story/2024/12/1158566</url>
+    </story>
+    <story>
+        <title>Ukraine: Russian Forces Executed Surrendering Ukraine Soldiers</title>
+        <description>Russian forces appear to have executed at least 15 Ukrainian soldiers as they attempted to surrender, and possibly six more who were surrendering or who had surrendered, since early December 2023, Human Rights Watch said today. These incidents should be investigated as war crimes.</description>
+        <imageUrl>story_ukraine</imageUrl>
+        <url>https://www.hrw.org/news/2024/05/02/ukraine-russian-forces-executed-surrendering-ukraine-soldiers</url>
+    </story>
+</stories>

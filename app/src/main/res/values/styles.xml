@@ -6,11 +6,8 @@
         <item name="colorPrimaryVariant">#3700B3</item>
         <item name="colorOnPrimary">#FFFFFF</item>
     </style>
-
-    <!-- Custom Button Style -->
     <style name="CustomButtonStyle" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">#F06292</item> <!-- Button background color -->
+        <item name="backgroundTint">#F06292</item>
         <item name="android:background">@drawable/button_rounded</item>
-<!--        <item name="textColor">#FFFFFF</item> -->
     </style>
 </resources>
