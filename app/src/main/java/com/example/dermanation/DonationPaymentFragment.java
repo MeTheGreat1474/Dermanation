@@ -16,13 +16,20 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -192,40 +199,113 @@ public class DonationPaymentFragment  extends Fragment {
 
     }
 
+//    private void popUpAds() {
+//        try {
+//            dialog = new Dialog(requireContext());
+//            dialog.setContentView(R.layout.fragment_popup_ad);
+//            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//            dialog.setCancelable(false);
+//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//            ImageButton closeButton = dialog.findViewById(R.id.closeButton);
+//            Button subscribeButton = dialog.findViewById(R.id.subButton);
+//
+//            if (closeButton != null && subscribeButton != null) {
+//                closeButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//
+//                subscribeButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        dialog.dismiss();
+//                    }
+//                });
+//            } else {
+//                Log.e("DonationPaymentFragment", "Buttons not found in the dialog layout!");
+//            }
+//
+//            dialog.show();
+//        } catch (Exception e) {
+//            Log.e("DonationPaymentFragment", "Error creating dialog: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
+
     private void popUpAds() {
-        try {
-            dialog = new Dialog(requireContext());
-            dialog.setContentView(R.layout.fragment_popup_ad);  // Set the custom layout for the dialog
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog.setCancelable(false);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String userId = currentUser.getUid();
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId);
 
-            ImageButton closeButton = dialog.findViewById(R.id.closeButton);
-            Button subscribeButton = dialog.findViewById(R.id.subButton);
+        if (currentUser == null) {
+            Log.e("DonationPaymentFragment", "User is not logged in.");
+            return;
+        }
 
-            if (closeButton != null && subscribeButton != null) {
-                closeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+        userRef.child("subscribed").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Boolean isSubscribed = snapshot.getValue(Boolean.class);
+
+                if (isSubscribed != null && isSubscribed) {
+                    Log.d("DonationPaymentFragment", "User already subscribed. Ad will not appear.");
+                } else {
+                    if (!snapshot.exists()) {
+                        userRef.child("subscribed").setValue(false).addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Log.d("DonationPaymentFragment", "Initialized 'subscribed' field to false.");
+                            } else {
+                                Log.e("DonationPaymentFragment", "Failed to initialize 'subscribed' field.");
+                                Toast.makeText(requireContext(), "Error initializing subscription status. Please try again.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
-                });
 
-                subscribeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        dialog.dismiss();
+                    try {
+                        dialog = new Dialog(requireContext());
+                        dialog.setContentView(R.layout.fragment_popup_ad);
+                        dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        dialog.setCancelable(false);
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                        ImageButton closeButton = dialog.findViewById(R.id.closeButton);
+                        Button subscribeButton = dialog.findViewById(R.id.subButton);
+
+                        if (closeButton != null && subscribeButton != null) {
+                            closeButton.setOnClickListener(v -> dialog.dismiss());
+
+                            subscribeButton.setOnClickListener(v -> {
+                                userRef.child("subscribed").setValue(true).addOnCompleteListener(task -> {
+                                    if (task.isSuccessful()) {
+                                        Log.d("DonationPaymentFragment", "Subscription status updated.");
+                                    } else {
+                                        Log.e("DonationPaymentFragment", "Failed to update subscription status.");
+                                        Toast.makeText(requireContext(), "Error updating subscription status. Please try again.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                dialog.dismiss();
+                            });
+                        } else {
+                            Log.e("DonationPaymentFragment", "Buttons not found in the dialog layout!");
+                        }
+
+                        dialog.show();
+                    } catch (Exception e) {
+                        Log.e("DonationPaymentFragment", "Error creating dialog: " + e.getMessage());
+                        e.printStackTrace();
                     }
-                });
-            } else {
-                Log.e("DonationPaymentFragment", "Buttons not found in the dialog layout!");
+                }
             }
 
-            dialog.show();
-        } catch (Exception e) {
-            Log.e("DonationPaymentFragment", "Error creating dialog: " + e.getMessage());
-            e.printStackTrace();
-        }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("DonationPaymentFragment", "Error reading subscription status: " + error.getMessage());
+            }
+        });
     }
 
     private void updateDonationProgress(double progressPercentage, FirebaseCallback callback) {
