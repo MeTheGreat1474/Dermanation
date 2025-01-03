@@ -57,6 +57,12 @@ public class Dashboard extends AppCompatActivity {
             startActivity(intent);
         });
 
+//        ImageView ivDonate = findViewById(R.id.IVDonate);
+//        ivDonate.setOnClickListener(v -> {
+//            Intent intent = new Intent(Dashboard.this, DonationActivity.class);
+//            startActivity(intent);
+//        });
+
 
         stories = parseStoriesXml();
 
