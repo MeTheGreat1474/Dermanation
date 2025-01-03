@@ -3,6 +3,7 @@ package com.example.dermanation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +26,6 @@ public class Setting extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.setting_activity);
 
@@ -91,5 +91,30 @@ public class Setting extends AppCompatActivity {
         } else {
             Toast.makeText(this, "No user signed in", Toast.LENGTH_SHORT).show();
         }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_setting);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.navigation_home) {
+                    startActivity(new Intent(Setting.this, MainActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_setting) {
+                    startActivity(new Intent(Setting.this, Setting.class));
+                    return true;
+                } else if (itemId == R.id.navigation_donate) {
+                    startActivity(new Intent(Setting.this, DonationActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_profile) {
+                    startActivity(new Intent(Setting.this, ProfilePage.class));
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 }

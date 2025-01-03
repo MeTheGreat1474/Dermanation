@@ -1,10 +1,14 @@
 package com.example.dermanation;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class DonationActivity extends AppCompatActivity {
@@ -29,5 +33,31 @@ public class DonationActivity extends AppCompatActivity {
 //
 //        DonationRepository repository = new DonationRepository();
 //        repository.addDonation(donation);
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_donate);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.navigation_home) {
+                    startActivity(new Intent(DonationActivity.this, MainActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_setting) {
+                    startActivity(new Intent(DonationActivity.this, Setting.class));
+                    return true;
+                } else if (itemId == R.id.navigation_donate) {
+                    startActivity(new Intent(DonationActivity.this, DonationActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_profile) {
+                    startActivity(new Intent(DonationActivity.this, ProfilePage.class));
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 }

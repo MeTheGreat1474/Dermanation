@@ -1,9 +1,13 @@
 package com.example.dermanation;
 
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +17,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.LoginFilter;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -21,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -110,13 +116,29 @@ public class MainActivity extends AppCompatActivity {
             lvStories.addView(createCardView(story.getTitle(), story.getDescription(), story.getImageUrl(), story.getUrl()));
         }
 
-        // Load BottomNavigationFragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        BottomNavigationFragment bottomNavigationFragment = new BottomNavigationFragment();
-        fragmentTransaction.replace(R.id.fragment_container, bottomNavigationFragment);
-        fragmentTransaction.commit();
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_home);
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.navigation_home) {
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_setting) {
+                    startActivity(new Intent(MainActivity.this, Setting.class));
+                    return true;
+                } else if (itemId == R.id.navigation_donate) {
+                    startActivity(new Intent(MainActivity.this, DonationActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_profile) {
+                    startActivity(new Intent(MainActivity.this, ProfilePage.class));
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     private CardView createCardView(String title, String description, String imageUrl, String url) {
