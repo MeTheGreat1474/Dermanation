@@ -1,5 +1,7 @@
 package com.example.dermanation;
 
+import android.util.Log;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
@@ -17,9 +19,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.xmlpull.v1.XmlPullParser;
 
@@ -29,12 +37,10 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
-
     Button button, profile_page;
-
     TextView textView;
-
     FirebaseUser user;
+    DatabaseReference userRef;
 
     private List<Story> stories;
 
@@ -44,37 +50,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-//        button = findViewById(R.id.logout);
-//        textView = findViewById(R.id.user_details);
-//        profile_page = findViewById(R.id.profile_page);
         user = auth.getCurrentUser();
+        TextView tvName = findViewById(R.id.TVName);
 
-//        if (user==null) {
-//            Intent intent = new Intent(getApplicationContext(), SignIn.class);
-//            startActivity(intent);
-//            finish();
-//        } else {
-//            textView.setText(user.getEmail());
-//        }
-//
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                Intent intent = new Intent(getApplicationContext(), SignIn.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//        profile_page.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), ProfilePage.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
+        if (user==null) {
+            Intent intent = new Intent(getApplicationContext(), SignIn.class);
+            startActivity(intent);
+            finish();
+        } else {
+            userRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
+            userRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Retrieve user name
+                        String name = snapshot.child("name").getValue(String.class);
+                        tvName.setText(name != null ? name : "N/A");
+                    } else {
+                        Toast.makeText(MainActivity.this, "User data not found!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(MainActivity.this, "Failed to fetch user data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
         ImageView ivSupport = findViewById(R.id.IVSupport);
         ivSupport.setOnClickListener(v -> {
@@ -111,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
         // Load BottomNavigationFragment
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, new BottomNavigationFragment());
+        BottomNavigationFragment bottomNavigationFragment = new BottomNavigationFragment();
+        fragmentTransaction.replace(R.id.fragment_container, bottomNavigationFragment);
         fragmentTransaction.commit();
 
     }

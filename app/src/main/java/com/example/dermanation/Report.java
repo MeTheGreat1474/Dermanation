@@ -1,9 +1,11 @@
 package com.example.dermanation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -13,6 +15,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -38,38 +43,39 @@ public class Report extends AppCompatActivity {
 
         EditText editTextReport = findViewById(R.id.ETReport);
         Button buttonSubmit = findViewById(R.id.BtnSubmit);
+        RatingBar RBRating = findViewById(R.id.RBRate);
 
         buttonSubmit.setOnClickListener(v -> {
             String reportType = dropdown.getSelectedItem().toString();
             String reportContent = editTextReport.getText().toString();
+            float reportRating = RBRating.getRating();
 
             if (reportContent.isEmpty()) {
                 Toast.makeText(Report.this, "Please enter a report", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            try {
-                createTxtFile(reportType, reportContent);
-                Toast.makeText(Report.this, "Report saved as TXT", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                Toast.makeText(Report.this, "Failed to save report", Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-            }
+            saveUserReport(reportType, reportContent, String.valueOf(reportRating));
+            Toast.makeText(Report.this, "Report sent", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(Report.this, Report.class);
+            startActivity(intent);
+
         });
     }
 
-    // report saved at user's internal storage /data/user/0/com.example.dermanation/files/report/report.txt
-    private void createTxtFile(String reportType, String reportContent) throws IOException {
-        File reportDir = new File(getFilesDir(), "report");
-        if (!reportDir.exists()) {
-            reportDir.mkdir();
-        }
-        File reportFile = new File(reportDir, "report.txt");
-        FileOutputStream fileOutputStream = new FileOutputStream(reportFile);
-        String report = "Type: " + reportType + "\nContent: " + reportContent;
-        fileOutputStream.write(report.getBytes());
-        fileOutputStream.close();
-        Log.d("Report", "Report saved at: " + reportFile.getAbsolutePath());
+    private void saveUserReport(String reportModule, String reportContent, String reportRating) {
+
+        String userId = "your_user_id"; // Replace with actual user ID
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference userReportsRef = database.getReference("userReports");
+
+        String reportId = userReportsRef.child(userId).push().getKey();
+
+        UserReport report = new UserReport(reportModule, reportContent, reportRating);
+
+        userReportsRef.child(reportId).setValue(report);
+
     }
 
 }
