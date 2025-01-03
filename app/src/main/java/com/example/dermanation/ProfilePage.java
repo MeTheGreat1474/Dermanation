@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -135,6 +137,29 @@ public class ProfilePage extends AppCompatActivity {
 
         }
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.navigation_home) {
+                    startActivity(new Intent(ProfilePage.this, MainActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_setting) {
+                    startActivity(new Intent(ProfilePage.this, Setting.class));
+                    return true;
+                } else if (itemId == R.id.navigation_donate) {
+                    startActivity(new Intent(ProfilePage.this, DonationActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_profile) {
+                    startActivity(new Intent(ProfilePage.this, ProfilePage.class));
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 }
