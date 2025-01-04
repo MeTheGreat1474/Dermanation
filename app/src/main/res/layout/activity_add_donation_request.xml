@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddDonationRequest">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Donation Request"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="@color/black"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/uploadDonationTitle"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Donation Title"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/black"
+                android:inputType="text"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/uploadDonationDetails"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Donation Details"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/black"
+                android:inputType="textLongMessage"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/uploadReceiverName"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Receiver Name"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/black"
+                android:inputType="textLongMessage"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/uploadTargetAmount"
+                android:background="@drawable/edit_text_border"
+                android:layout_marginTop="20dp"
+                android:padding="16dp"
+                android:hint="Target Amount"
+                android:gravity="start|center_vertical"
+                android:textColor="@color/black"
+                android:inputType="numberDecimal"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="CREATE DONATION REQUEST"
+                style="@style/CustomButtonStyle"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:id="@+id/createDonationRequestButton"
+                android:layout_marginTop="20dp"
+                app:cornerRadius="20dp"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</ScrollView>
