@@ -123,17 +123,6 @@
         app:layout_constraintStart_toStartOf="@+id/textView44"
         app:layout_constraintTop_toBottomOf="@+id/textView44" />
 
-    <TextView
-        android:id="@+id/textView45"
-        android:layout_width="181dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="24dp"
-        android:text="Attach Related Documents (exp: Copy of IC ,Payslip)"
-        android:textAlignment="viewStart"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/editHouseholdIncome"
-        app:layout_constraintTop_toBottomOf="@+id/editHouseholdIncome" />
-
     <Button
         android:id="@+id/btn_verify_receiver"
         style="@style/CustomButtonStyle"
@@ -157,16 +146,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView39"
         app:layout_constraintEnd_toStartOf="@+id/textView39"
         app:layout_constraintTop_toTopOf="@+id/textView39" />
-
-    <TextView
-        android:id="@+id/textView71"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="Attach Documents"
-        android:textColor="#00BCD4"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView45"
-        app:layout_constraintTop_toBottomOf="@+id/textView45" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
