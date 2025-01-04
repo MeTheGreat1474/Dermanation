@@ -39,7 +39,15 @@ public class DonationAdapter extends RecyclerView.Adapter<DonationViewHolder> {
         String formattedAmount = String.format("RM%d/%d", currentAmount, donation.getTargetAmount());
         holder.targetAmountTV.setText(formattedAmount);
         holder.progressPB.setProgress(donation.getProgress());
-        holder.donationImageIV.setImageResource(donation.getDonationImage());
+//        holder.donationImageIV.setImageResource(donation.getDonationImage());
+        int resourceId = context.getResources().getIdentifier(
+                donation.getDonationImage(), "drawable", context.getPackageName());
+
+        if (resourceId != 0) {
+            holder.donationImageIV.setImageResource(resourceId);
+        } else {
+            holder.donationImageIV.setImageResource(R.drawable.donation_img_8);
+        }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
