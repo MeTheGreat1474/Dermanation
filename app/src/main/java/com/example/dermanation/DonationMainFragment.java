@@ -109,12 +109,13 @@ public class DonationMainFragment extends Fragment implements DonationListener {
                 if (dataSnapshot.exists()) {
                     // applyReceiver is Boolean in the database
                     Boolean applyReceiver = dataSnapshot.child("applyReceiver").getValue(Boolean.class);
-                    if (applyReceiver != null && applyReceiver) {
-                        String receiverStatus = dataSnapshot.child("receiverStatus").getValue(String.class);
-                        if (!"Verified".equals(receiverStatus)) {
-                            // Hide the FloatingActionButton if the receiverStatus is not "Verified"
-                            fab.setVisibility(View.GONE);
-                        }
+                    String receiverStatus = dataSnapshot.child("receiverStatus").getValue(String.class);
+                    if (applyReceiver != null && applyReceiver && receiverStatus != null && receiverStatus.equals("Verified")) {
+                        // Show the FloatingActionButton if the user is a receiver
+                        fab.setVisibility(View.VISIBLE);
+                    } else {
+                        // Hide the FloatingActionButton if the user is not a receiver
+                        fab.setVisibility(View.GONE);
                     }
                 }
             }

@@ -61,6 +61,8 @@ public class ProfilePage extends AppCompatActivity {
             }
         });
 
+        return_icon.setVisibility(View.GONE);
+
         edit_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +120,7 @@ public class ProfilePage extends AppCompatActivity {
                         user_gender.setText(gender != null ? gender : "-");
 
                         // Show or hide the button based on isReceiverValue
-                        if (isReceiverValue != null && isReceiverValue) {
+                        if (isReceiverValue != null && isReceiverValue && !"Verified".equals(receiverStatus)) {
                             btn_verify_receiver.setVisibility(View.VISIBLE); // Hide the button
                         } else {
                             btn_verify_receiver.setVisibility(View.GONE); // Show the button
