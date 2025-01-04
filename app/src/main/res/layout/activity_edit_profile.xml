@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="260dp"
         android:text="Birth Date"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,9 +55,9 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="169dp"
-        android:layout_height="162dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="25dp"
         android:background="@drawable/rounded_image"
         android:clipToOutline="true"
         android:scaleType="centerCrop"
@@ -149,7 +149,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_height="90dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@+id/textView43"
         app:layout_constraintTop_toBottomOf="@+id/textView43">
@@ -157,7 +157,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextAddress"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="85dp"
             android:background="@drawable/edit_text_border"
             android:hint="   Enter Address"
             android:textSize="13sp" />

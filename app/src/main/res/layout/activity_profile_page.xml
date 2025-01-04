@@ -21,7 +21,7 @@
         android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="30dp"
         android:text="Email"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
@@ -101,9 +101,11 @@
 
     <TextView
         android:id="@+id/user_address"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Kolej Kediaman Kinabalu, University Malaya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView29"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
@@ -112,7 +114,7 @@
         android:layout_width="134dp"
         android:layout_height="134dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="130dp"
         android:background="@drawable/rounded_image"
         android:scaleType="centerCrop"
         android:clipToOutline="true"
@@ -148,6 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="EDIT"
+        android:textSize="20sp"
         android:textColor="#2196F3"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView32"
