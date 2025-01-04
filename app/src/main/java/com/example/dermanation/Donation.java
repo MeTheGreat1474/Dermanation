@@ -3,18 +3,18 @@ package com.example.dermanation;
 public class Donation {
     private String donationId;
     private String donationTitle;
-    private int donationImage;
+    private String donationImage;
     private int targetAmount;
     private int progress;
 
-    private int receiverImage;
+    private String receiverImage;
     private String receiverName;
     private String donationDetail;
 
     public Donation() {
     }
 
-    public Donation(String donationId, String donationTitle, int donationImage, int targetAmount, int progress, int receiverImage, String receiverName, String donationDetail) {
+    public Donation(String donationId, String donationTitle, String donationImage, int targetAmount, int progress, String receiverImage, String receiverName, String donationDetail) {
         this.donationId = donationId;
         this.donationTitle = donationTitle;
         this.donationImage = donationImage;
@@ -41,11 +41,11 @@ public class Donation {
         this.targetAmount = targetAmount;
     }
 
-    public int getDonationImage() {
+    public String getDonationImage() {
         return donationImage;
     }
 
-    public void setDonationImage(int donationImage) {
+    public void setDonationImage(String donationImage) {
         this.donationImage = donationImage;
     }
 
@@ -65,11 +65,11 @@ public class Donation {
         this.donationId = donationId;
     }
 
-    public int getReceiverImage() {
+    public String getReceiverImage() {
         return receiverImage;
     }
 
-    public void setReceiverImage(int receiverImage) {
+    public void setReceiverImage(String receiverImage) {
         this.receiverImage = receiverImage;
     }
 
