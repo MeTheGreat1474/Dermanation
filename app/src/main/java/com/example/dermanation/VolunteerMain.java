@@ -1,10 +1,14 @@
 package com.example.dermanation;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +27,21 @@ public class VolunteerMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteer_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbarVolunteerMain);
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
+        Button buttonJoined = findViewById(R.id.joinedButton);
+        buttonJoined.setOnClickListener(v -> {
+            Intent intent = new Intent(VolunteerMain.this, VolunteerJoinedEvents.class);
+            startActivity(intent);
+        });
 
         List<VolunteerItem> healthItems = Arrays.asList(
                 new VolunteerItem("1", "Blood Donation Assistant", R.drawable.blood_donation_pic, R.drawable.blood_donation_icon, "Pusat Darah Negara", 0),
@@ -68,7 +87,6 @@ public class VolunteerMain extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    // Update participationCount for health items
                     for (VolunteerItem item : healthItems) {
                         String id = item.getId();
                         if (snapshot.child(id).child("participationCount").exists()) {
@@ -77,7 +95,6 @@ public class VolunteerMain extends AppCompatActivity {
                         }
                     }
 
-                    // Repeat for other categories...
                     for (VolunteerItem item : youthItems) {
                         String id = item.getId();
                         if (snapshot.child(id).child("participationCount").exists()) {
@@ -110,7 +127,6 @@ public class VolunteerMain extends AppCompatActivity {
                         }
                     }
 
-                    // Notify adapter
                     verticalAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(VolunteerMain.this, "No data found in Firebase", Toast.LENGTH_SHORT).show();
@@ -123,4 +139,14 @@ public class VolunteerMain extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
