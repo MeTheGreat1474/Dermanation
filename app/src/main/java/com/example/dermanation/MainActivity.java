@@ -135,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (itemId == R.id.navigation_profile) {
                     startActivity(new Intent(MainActivity.this, ProfilePage.class));
                     return true;
+                } else if (itemId == R.id.navigation_community) {
+                    startActivity(new Intent(MainActivity.this, Community.class));
+                    return true;
                 }
                 return false;
             }
