@@ -31,44 +31,46 @@ public class Support extends AppCompatActivity {
             return insets;
         });
 
+        // Set up the support options to open the phone dialer and pre-fill the phone number
         CardView cvHotlineMY = findViewById(R.id.CVHotlineMy);
         cvHotlineMY.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phoneNumber = "tel:1012345678"; // Replace with the support phone number
+                String phoneNumber = "tel:1012345678";
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(phoneNumber));
                 startActivity(intent);
             }
         });
-
         CardView cvHotlineIntl = findViewById(R.id.CVHotlineIntl);
         cvHotlineIntl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phoneNumber = "tel:1876543210"; // Replace with the support phone number
+                String phoneNumber = "tel:1876543210";
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(phoneNumber));
                 startActivity(intent);
             }
         });
 
+        // Set up the support options to open the email client and pre-fill the email address
         CardView cvEmail = findViewById(R.id.CVEmail);
         cvEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = "Dermanation@gmail.com"; // Replace with the support email
+                String email = "Dermanation@gmail.com";
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:" + email));
                 startActivity(intent);
             }
         });
 
+        // Set up the support options to open the phone dialer and pre-fill the phone number
         CardView cvFraud = findViewById(R.id.CVFraud);
         cvFraud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phoneNumber = "tel:6012345678"; // Replace with the support phone number
+                String phoneNumber = "tel:6012345678";
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse(phoneNumber));
                 startActivity(intent);

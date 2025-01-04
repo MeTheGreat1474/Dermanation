@@ -36,6 +36,7 @@ public class Report extends AppCompatActivity {
             return insets;
         });
 
+        // Set up spinner with report options
         Spinner dropdown = findViewById(R.id.SPNOption);
         String[] items = new String[]{"Donation", "Volunteer", "Beneficiary", "Community", "Feedback"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -45,16 +46,20 @@ public class Report extends AppCompatActivity {
         Button buttonSubmit = findViewById(R.id.BtnSubmit);
         RatingBar RBRating = findViewById(R.id.RBRate);
 
+        // Set up submit button with listener for sending report to database
         buttonSubmit.setOnClickListener(v -> {
+            // Get report details
             String reportType = dropdown.getSelectedItem().toString();
             String reportContent = editTextReport.getText().toString();
             float reportRating = RBRating.getRating();
 
+            // Validate report content
             if (reportContent.isEmpty()) {
                 Toast.makeText(Report.this, "Please enter a report", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // Save report to database
             saveUserReport(reportType, reportContent, String.valueOf(reportRating));
             Toast.makeText(Report.this, "Report sent", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Report.this, Report.class);
@@ -64,18 +69,12 @@ public class Report extends AppCompatActivity {
     }
 
     private void saveUserReport(String reportModule, String reportContent, String reportRating) {
-
-        String userId = "your_user_id"; // Replace with actual user ID
-
+        String userId = "0123";
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference userReportsRef = database.getReference("userReports");
-
         String reportId = userReportsRef.child(userId).push().getKey();
-
         UserReport report = new UserReport(reportModule, reportContent, reportRating);
-
         userReportsRef.child(reportId).setValue(report);
-
     }
 
 }
