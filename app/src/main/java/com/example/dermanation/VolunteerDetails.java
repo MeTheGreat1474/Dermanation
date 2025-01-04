@@ -27,12 +27,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class VolunteerDetails extends AppCompatActivity {
 
-    // Firebase references
     FirebaseAuth auth;
     FirebaseUser currentUser;
     DatabaseReference userRef;
 
-    // Variables
     String eventId;
     String userName;
 
@@ -41,12 +39,10 @@ public class VolunteerDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.volunteer_details);
 
-        // Initialize Firebase
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
 
         if (currentUser == null) {
-            // Handle user not signed in
             Toast.makeText(this, "User not signed in!", Toast.LENGTH_SHORT).show();
             finish();
             return;
@@ -57,7 +53,7 @@ public class VolunteerDetails extends AppCompatActivity {
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
 
@@ -77,6 +73,12 @@ public class VolunteerDetails extends AppCompatActivity {
         ((ImageView) findViewById(R.id.iconView)).setImageResource(organizationIcon);
 
         Button goButton = findViewById(R.id.go_button);
+
+        // for when coming from joined events section
+        boolean hideGoButton = getIntent().getBooleanExtra("HIDE_GO_BUTTON", false);
+        if (hideGoButton) {
+            goButton.setVisibility(View.GONE);
+        }
 
         eventId = itemId;
         userRef = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
@@ -98,7 +100,6 @@ public class VolunteerDetails extends AppCompatActivity {
             }
         });
 
-        // Can fetch from firebase
         if (itemId.equals("1")) {
             itemImageView.setImageResource(R.drawable.blood_donation_pic);
             itemDescriptionTextView.setText("Assist in organizing blood donation events.");
@@ -194,17 +195,6 @@ public class VolunteerDetails extends AppCompatActivity {
                 confirmButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        //try connect firebase
-//                        goButton.setEnabled(false);
-//                        goButton.setBackgroundTintList(ContextCompat.getColorStateList(VolunteerDetails.this, R.color.dark_gray));
-
-//                        if (userName != null) {
-//                            // Handle the "Go" button logic using eventId and userName
-//                            checkIfUserJoined(eventId, userName, goButton);
-//                        } else {
-//                            Toast.makeText(VolunteerDetails.this, "User name not loaded yet. Please wait.", Toast.LENGTH_SHORT).show();
-//                        }
                         joinEvent(eventId, userName, goButton);
                         dialog.dismiss();
                     }
@@ -221,12 +211,6 @@ public class VolunteerDetails extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     userName = snapshot.child("name").getValue(String.class);
-
-//                    if (userName != null) {
-//                        Toast.makeText(VolunteerDetails.this, "Welcome, " + userName, Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(VolunteerDetails.this, "User name not found!", Toast.LENGTH_SHORT).show();
-//                    }
                 } else {
                     Toast.makeText(VolunteerDetails.this, "User data not found!", Toast.LENGTH_SHORT).show();
                 }
