@@ -1,5 +1,6 @@
 package com.example.dermanation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -95,6 +97,44 @@ public class DonationMainFragment extends Fragment implements DonationListener {
                 donationAdapter.filteredList(filteredList);
             }
         });
+
+        // Set up the FloatingActionButton to navigate to AddDonationRequest.class
+        View fab = view.findViewById(R.id.fab);
+
+        // Check the current user's receiverStatus from Firebase
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(getCurrentUserId());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // applyReceiver is Boolean in the database
+                    Boolean applyReceiver = dataSnapshot.child("applyReceiver").getValue(Boolean.class);
+                    if (applyReceiver != null && applyReceiver) {
+                        String receiverStatus = dataSnapshot.child("receiverStatus").getValue(String.class);
+                        if (!"Verified".equals(receiverStatus)) {
+                            // Hide the FloatingActionButton if the receiverStatus is not "Verified"
+                            fab.setVisibility(View.GONE);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("DonationMainFragment", "Failed to read user data", databaseError.toException());
+            }
+        });
+
+        fab.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AddDonationRequest.class);
+            startActivity(intent);
+        });
+
+    }
+
+    // Helper method to get the current user's ID
+    private String getCurrentUserId() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
     @Override
