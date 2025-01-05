@@ -96,6 +96,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, DonationActivity.class);
             startActivity(intent);
         });
+        ImageView ivCommunity = findViewById(R.id.IVCommunity);
+        ivCommunity.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Community.class);
+            startActivity(intent);
+        });
 
         // Set up card views that show stories and bring user to respective web pages on click
         stories = parseStoriesXml();
