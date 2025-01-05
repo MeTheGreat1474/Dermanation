@@ -53,6 +53,9 @@ public class DonationActivity extends AppCompatActivity {
                 } else if (itemId == R.id.navigation_profile) {
                     startActivity(new Intent(DonationActivity.this, ProfilePage.class));
                     return true;
+                }  else if (itemId == R.id.navigation_community) {
+                    startActivity(new Intent(DonationActivity.this, Community.class));
+                    return true;
                 }
                 return false;
             }
