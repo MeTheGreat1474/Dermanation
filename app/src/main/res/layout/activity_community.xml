@@ -60,17 +60,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CommunitySharingText" />
 
-    <Button
-        android:id="@+id/NewPostButton"
-        style="@style/Widget.Material3.Button.ElevatedButton"
-        android:layout_width="143dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="28dp"
-        android:text="+ NEW POST"
-        android:textColor="@color/pink"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
@@ -82,14 +71,27 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="437dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="384dp"
+        android:layout_height="530dp"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="14dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FilterText" />
+
+    <Button
+        android:id="@+id/NewPostButton"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="143dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="+ NEW POST"
+        android:textColor="@color/pink"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
