@@ -15,10 +15,10 @@
       </SelectionState>
       <SelectionState runConfigName="SignIn">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-01-05T11:19:36.561175700Z">
+        <DropdownSelection timestamp="2025-01-05T11:27:20.422417400Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Ahmad Taufiq\.android\avd\Pixel_9_Pro_XL_API_VanillaIceCream.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Ahmad Taufiq\.android\avd\Pixel_3a_API_VanillaIceCream.avd" />
             </handle>
           </Target>
         </DropdownSelection>

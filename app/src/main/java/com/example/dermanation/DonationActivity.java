@@ -18,7 +18,7 @@ public class DonationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donation_activity);
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
 //        DonationFirebase donation = new DonationFirebase(
 //                null,
@@ -49,6 +49,9 @@ public class DonationActivity extends AppCompatActivity {
                     return true;
                 } else if (itemId == R.id.navigation_donate) {
                     startActivity(new Intent(DonationActivity.this, DonationActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_profile) {
+                    startActivity(new Intent(DonationActivity.this, ProfilePage.class));
                     return true;
                 } else if (itemId == R.id.navigation_profile) {
                     startActivity(new Intent(DonationActivity.this, ProfilePage.class));
