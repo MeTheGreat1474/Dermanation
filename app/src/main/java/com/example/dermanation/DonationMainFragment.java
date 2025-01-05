@@ -144,11 +144,11 @@ public class DonationMainFragment extends Fragment implements DonationListener {
 
         Bundle bundle = new Bundle();
         bundle.putString("donationId", donation.getDonationId());
-        bundle.putInt("receiverImage", donation.getReceiverImage());
+        bundle.putString("receiverImage", donation.getReceiverImage());
         bundle.putString("receiverName", donation.getReceiverName());
         bundle.putString("donationDetail", donation.getDonationDetail());
         bundle.putString("donationTitle", donation.getDonationTitle());
-        bundle.putInt("donationImage", donation.getDonationImage());
+        bundle.putString("donationImage", donation.getDonationImage());
         bundle.putDouble("targetAmount", donation.getTargetAmount());
         bundle.putDouble("progress", donation.getProgress());
 

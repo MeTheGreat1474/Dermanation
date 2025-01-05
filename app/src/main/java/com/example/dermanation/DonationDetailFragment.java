@@ -57,11 +57,11 @@ public class DonationDetailFragment extends Fragment {
             Log.d("DonationDetailFragment", "Bundle is not null");
 
             String donationID = bundle.getString("donationId");
-            int receiverImage = bundle.getInt("receiverImage");
+            String receiverImage = bundle.getString("receiverImage");
             String receiverName = bundle.getString("receiverName");
             String donationDetail = bundle.getString("donationDetail");
             String donationTitle = bundle.getString("donationTitle");
-            int donationImage = bundle.getInt("donationImage");
+            String donationImage = bundle.getString("donationImage");
             double targetAmount = bundle.getDouble("targetAmount");
             double progress = bundle.getDouble("progress");
 
@@ -81,22 +81,30 @@ public class DonationDetailFragment extends Fragment {
             TextView donationDetailTextView = view.findViewById(R.id.donationDetailTV);
             ImageView receiverImageView = view.findViewById(R.id.receiverImageIV);
 
-            // Set the data to the UI elements
             donationTitleTextView.setText(donationTitle);
-            donationImageView.setImageResource(donationImage);
+//            donationImageView.setImageResource(donationImage);
+            int donationImageResId = getResources().getIdentifier(donationImage, "drawable", getContext().getPackageName());
+            if (donationImageResId != 0) {
+                donationImageView.setImageResource(donationImageResId);
+            } else {
+                donationImageView.setImageResource(R.drawable.donation_img_8);
+            }
 
-            // Set target amount and progress
             int currentAmount = (int) ((progress / 100.0) * targetAmount);
             String formattedAmount = String.format("RM%d/%d", currentAmount, (int) targetAmount);
             targetAmountTextView.setText(formattedAmount);
             progressBar.setProgress((int) progress);
 
-            // Set receiver data
-            receiverImageView.setImageResource(receiverImage);
+//            receiverImageView.setImageResource(receiverImage);
+            int receiverImageResId = getResources().getIdentifier(receiverImage, "drawable", getContext().getPackageName());
+            if (receiverImageResId != 0) {
+                receiverImageView.setImageResource(receiverImageResId);
+            } else {
+                receiverImageView.setImageResource(R.drawable.donation_img_1);
+            }
             receiverNameTextView.setText(receiverName);
             donationDetailTextView.setText(donationDetail);
 
-            // Set up the donate button action
             if (donateButton != null) {
                 donateButton.setOnClickListener(v -> {
                     Log.d("DonationDetailFragment", "Donate button clicked");

@@ -36,7 +36,7 @@
                 android:id="@+id/donationImageIV"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
-                app:srcCompat="@drawable/img" />
+                app:srcCompat="@drawable/donation_img_8" />
 
             <TextView
                 android:id="@+id/donationTitleTV"
@@ -81,7 +81,7 @@
             android:id="@+id/receiverImageIV"
             android:layout_width="90dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/img_1" />
+            app:srcCompat="@drawable/donation_img_1" />
 
         <TextView
             android:id="@+id/receiverNameTV"

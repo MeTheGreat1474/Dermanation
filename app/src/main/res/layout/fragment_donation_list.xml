@@ -19,7 +19,7 @@
             android:id="@+id/donationImageIV"
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            app:srcCompat="@drawable/img" />
+            app:srcCompat="@drawable/donation_img_8" />
 
         <TextView
             android:id="@+id/donationTitleTV"

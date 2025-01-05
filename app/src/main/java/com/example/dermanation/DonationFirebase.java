@@ -3,17 +3,17 @@ package com.example.dermanation;
 public class DonationFirebase {
     private String donationId;
     private String donationTitle;
-    private int donationImage;
+    private String donationImage;
     private int targetAmount;
     private int progress;
-    private int receiverImage;
+    private String receiverImage;
     private String receiverName;
     private String donationDetail;
 
     public DonationFirebase() {
     }
 
-    public DonationFirebase(String donationId, String donationTitle, int donationImage, int targetAmount, int progress, int receiverImage, String receiverName, String donationDetail) {
+    public DonationFirebase(String donationId, String donationTitle, String donationImage, int targetAmount, int progress, String receiverImage, String receiverName, String donationDetail) {
         this.donationId = donationId;
         this.donationTitle = donationTitle;
         this.donationImage = donationImage;
@@ -24,52 +24,12 @@ public class DonationFirebase {
         this.donationDetail = donationDetail;
     }
 
-    public String getDonationId() {
-        return donationId;
+    public String getDonationDetail() {
+        return donationDetail;
     }
 
-    public void setDonationId(String donationId) {
-        this.donationId = donationId;
-    }
-
-    public String getDonationTitle() {
-        return donationTitle;
-    }
-
-    public void setDonationTitle(String donationTitle) {
-        this.donationTitle = donationTitle;
-    }
-
-    public int getDonationImage() {
-        return donationImage;
-    }
-
-    public void setDonationImage(int donationImage) {
-        this.donationImage = donationImage;
-    }
-
-    public int getTargetAmount() {
-        return targetAmount;
-    }
-
-    public void setTargetAmount(int targetAmount) {
-        this.targetAmount = targetAmount;
-    }
-
-    public int getProgress() {
-        return progress;
-    }
-
-    public void setProgress(int progress) {
-        this.progress = progress;
-    }
-
-    public int getReceiverImage() {
-        return receiverImage;
-    }
-
-    public void setReceiverImage(int receiverImage) {
-        this.receiverImage = receiverImage;
+    public void setDonationDetail(String donationDetail) {
+        this.donationDetail = donationDetail;
     }
 
     public String getReceiverName() {
@@ -80,11 +40,51 @@ public class DonationFirebase {
         this.receiverName = receiverName;
     }
 
-    public String getDonationDetail() {
-        return donationDetail;
+    public String getReceiverImage() {
+        return receiverImage;
     }
 
-    public void setDonationDetail(String donationDetail) {
-        this.donationDetail = donationDetail;
+    public void setReceiverImage(String receiverImage) {
+        this.receiverImage = receiverImage;
+    }
+
+    public int getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
+    }
+
+    public int getTargetAmount() {
+        return targetAmount;
+    }
+
+    public void setTargetAmount(int targetAmount) {
+        this.targetAmount = targetAmount;
+    }
+
+    public String getDonationImage() {
+        return donationImage;
+    }
+
+    public void setDonationImage(String donationImage) {
+        this.donationImage = donationImage;
+    }
+
+    public String getDonationTitle() {
+        return donationTitle;
+    }
+
+    public void setDonationTitle(String donationTitle) {
+        this.donationTitle = donationTitle;
+    }
+
+    public String getDonationId() {
+        return donationId;
+    }
+
+    public void setDonationId(String donationId) {
+        this.donationId = donationId;
     }
 }
