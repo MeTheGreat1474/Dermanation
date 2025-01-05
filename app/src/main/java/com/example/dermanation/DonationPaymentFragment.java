@@ -2,6 +2,7 @@ package com.example.dermanation;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -153,7 +154,11 @@ public class DonationPaymentFragment  extends Fragment {
                     @Override
                     public void onSuccess() {
                         // Navigate after successful database update
-                        Navigation.findNavController(view).navigate(R.id.navigation_home);
+//                        Navigation.findNavController(requireView()).navigate(R.id.navigation_home);
+                        Intent intent = new Intent(requireContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        requireActivity().finish();
                     }
 
                     @Override
@@ -198,43 +203,6 @@ public class DonationPaymentFragment  extends Fragment {
         }
 
     }
-
-//    private void popUpAds() {
-//        try {
-//            dialog = new Dialog(requireContext());
-//            dialog.setContentView(R.layout.fragment_popup_ad);
-//            dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//            dialog.setCancelable(false);
-//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//            ImageButton closeButton = dialog.findViewById(R.id.closeButton);
-//            Button subscribeButton = dialog.findViewById(R.id.subButton);
-//
-//            if (closeButton != null && subscribeButton != null) {
-//                closeButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//
-//                subscribeButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        dialog.dismiss();
-//                    }
-//                });
-//            } else {
-//                Log.e("DonationPaymentFragment", "Buttons not found in the dialog layout!");
-//            }
-//
-//            dialog.show();
-//        } catch (Exception e) {
-//            Log.e("DonationPaymentFragment", "Error creating dialog: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
-
     private void popUpAds() {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
