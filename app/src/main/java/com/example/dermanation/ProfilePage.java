@@ -158,6 +158,9 @@ public class ProfilePage extends AppCompatActivity {
                 } else if (itemId == R.id.navigation_profile) {
                     startActivity(new Intent(ProfilePage.this, ProfilePage.class));
                     return true;
+                } else if (itemId == R.id.navigation_community) {
+                    startActivity(new Intent(ProfilePage.this, Community.class));
+                    return true;
                 }
                 return false;
             }
