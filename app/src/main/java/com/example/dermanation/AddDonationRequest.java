@@ -82,9 +82,9 @@ public class AddDonationRequest extends AppCompatActivity {
                     title,
                     desc,
                     0.0f, // Default progress
-                    2131165389, // Example receiver image resource ID
+                    "donation_img_1", // Example receiver image resource ID
                     receiver,
-                    2131165484, // Example donation image resource ID
+                    "donation_img_8", // Example donation image resource ID
                     amountInt
             );
 

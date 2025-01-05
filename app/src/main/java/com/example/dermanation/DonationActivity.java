@@ -23,10 +23,10 @@ public class DonationActivity extends AppCompatActivity {
 //        DonationFirebase donation = new DonationFirebase(
 //                null,
 //                "Help Welfare House",
-//                R.drawable.img_9,
+//                "donation_img_9",
 //                2000,
 //                20,
-//                R.drawable.img_10,
+//                "donation_img_10",
 //                "Peduli Insan",
 //                "Care For Malaysia is a charity organization, your generous donations enable the Care For Malaysia Center to cover monthly living and operational expenses. Your kind support can help to cover the monthly expenses of Care for Malaysia Society "
 //        );

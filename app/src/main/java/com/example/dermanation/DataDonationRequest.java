@@ -8,10 +8,10 @@ public class DataDonationRequest {
     private String receiverName;
     private int targetAmount;
     private float progress;
-    private int receiverImage;
-    private int donationImage;
+    private String receiverImage;
+    private String donationImage;
 
-    public DataDonationRequest(String donationId, String donationTitle, String donationDetail, float progress, int receiverImage,  String receiverName, int donationImage, int targetAmount) {
+    public DataDonationRequest(String donationId, String donationTitle, String donationDetail, float progress, String receiverImage,  String receiverName, String donationImage, int targetAmount) {
         this.donationId = donationId;
         this.donationTitle = donationTitle;
         this.donationDetail = donationDetail;
@@ -50,11 +50,11 @@ public class DataDonationRequest {
         return progress;
     }
 
-    public int getReceiverImage() {
+    public String getReceiverImage() {
         return receiverImage;
     }
 
-    public int getDonationImage() {
+    public String getDonationImage() {
         return donationImage;
     }
 }
