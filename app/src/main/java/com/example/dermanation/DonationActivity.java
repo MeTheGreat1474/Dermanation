@@ -18,7 +18,7 @@ public class DonationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donation_activity);
 
-//        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
 //        DonationFirebase donation = new DonationFirebase(
 //                null,
@@ -33,7 +33,6 @@ public class DonationActivity extends AppCompatActivity {
 //
 //        DonationRepository repository = new DonationRepository();
 //        repository.addDonation(donation);
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.navigation_donate);

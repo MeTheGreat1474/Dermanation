@@ -2,6 +2,7 @@ package com.example.dermanation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,13 +41,13 @@ public class Community extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+//        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_community);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
 
         // Spinner stuff
         Spinner spinner = findViewById(R.id.Filter);
@@ -129,6 +131,33 @@ public class Community extends AppCompatActivity {
             }
         });
 
+        // Set up bottom navigation view
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setSelectedItemId(R.id.navigation_community);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Switch between pages based on bottom navigation item selected
+                int itemId = item.getItemId();
+                if (itemId == R.id.navigation_home) {
+                    startActivity(new Intent(Community.this, MainActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_setting) {
+                    startActivity(new Intent(Community.this, Setting.class));
+                    return true;
+                } else if (itemId == R.id.navigation_donate) {
+                    startActivity(new Intent(Community.this, DonationActivity.class));
+                    return true;
+                } else if (itemId == R.id.navigation_profile) {
+                    startActivity(new Intent(Community.this, ProfilePage.class));
+                    return true;
+                } else if (itemId == R.id.navigation_community) {
+                    startActivity(new Intent(Community.this, Community.class));
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 }

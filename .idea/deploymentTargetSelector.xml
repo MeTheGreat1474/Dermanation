@@ -15,7 +15,7 @@
       </SelectionState>
       <SelectionState runConfigName="SignIn">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-01-04T10:56:48.586871700Z">
+        <DropdownSelection timestamp="2025-01-05T11:19:36.561175700Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Ahmad Taufiq\.android\avd\Pixel_9_Pro_XL_API_VanillaIceCream.avd" />
@@ -23,6 +23,15 @@
           </Target>
         </DropdownSelection>
         <DialogSelection />
+      </SelectionState>
+      <SelectionState runConfigName="DonationActivity">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="VolunteerMain">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="Community">
+        <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
   </component>
