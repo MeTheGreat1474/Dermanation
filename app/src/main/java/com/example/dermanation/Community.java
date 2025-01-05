@@ -2,6 +2,8 @@ package com.example.dermanation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -23,12 +25,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Community extends AppCompatActivity {
 
     private PostAdapter postAdapter;
     private List<Post> postList = new ArrayList<>();
+
+    private String filter;
 
 
     @Override
@@ -44,10 +49,31 @@ public class Community extends AppCompatActivity {
 
         // Spinner stuff
         Spinner spinner = findViewById(R.id.Filter);
-        String[] items = new String[]{"Newest", "Oldest", "Top"};
+        String[] items = new String[]{"Newest", "Oldest"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                filter = parent.getItemAtPosition(position).toString();
+
+                if (filter.equals("Newest")) {
+                    Collections.reverse(postList);
+                }
+                if (filter.equals("Oldest")) {
+                    Collections.reverse(postList);
+                }
+
+                postAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         // Bring to volunteer page button
         Button volunteerButton = findViewById(R.id.VolunteerButton);
@@ -91,6 +117,8 @@ public class Community extends AppCompatActivity {
                     if (postList != null)
                         postList.add(post);
                 }
+                Collections.reverse(postList);
+
                 postAdapter.notifyDataSetChanged();
             }
 

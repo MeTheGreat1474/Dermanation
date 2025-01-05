@@ -31,22 +31,22 @@
         android:id="@+id/Filter"
         android:layout_width="120dp"
         android:layout_height="48dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CommunitySharingText" />
+        app:layout_constraintTop_toBottomOf="@+id/VolunteerButton" />
 
     <TextView
         android:id="@+id/FilterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="24dp"
         android:text="Filter Posts"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CommunitySharingText" />
+        app:layout_constraintTop_toBottomOf="@+id/VolunteerButton" />
 
     <Button
         android:id="@+id/VolunteerButton"
@@ -54,11 +54,11 @@
         android:layout_width="301dp"
         android:layout_height="50dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="44dp"
         android:text="Volunteer Opportunities >"
         android:textColor="@color/bottom_nav_item_color"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FilterText" />
+        app:layout_constraintTop_toBottomOf="@+id/CommunitySharingText" />
 
     <Button
         android:id="@+id/NewPostButton"
@@ -72,13 +72,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FilterText" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postRecyclerView"
-        android:layout_width="375dp"
-        android:layout_height="370dp"
+        android:layout_width="380dp"
+        android:layout_height="437dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/VolunteerButton" />
+        app:layout_constraintTop_toBottomOf="@+id/FilterText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
