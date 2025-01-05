@@ -84,6 +84,7 @@ public class CommunityPost extends AppCompatActivity {
 
             if (!title.isEmpty() && !content.isEmpty()) {
                 addNewPost(new Post(userName, title, content, date));
+                Toast.makeText(CommunityPost.this, "Successfully added a new post!", Toast.LENGTH_SHORT).show();
                 finish();
             }
             else {
