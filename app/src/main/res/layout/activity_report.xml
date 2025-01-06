@@ -23,7 +23,7 @@
         android:paddingBottom="5dp"
         android:layout_marginTop="20dp"
         android:textStyle="bold"
-        android:text="Please select the option the you want to give feedback" />
+        android:text="Please select the option the you want to give report" />
 
     <Spinner
         android:id="@+id/SPNOption"
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="What feedback do you have about our Volunteer management system ?" />
+        android:text="What report do you have about our system ?" />
 
     <EditText
         android:id="@+id/ETReport"
@@ -48,7 +48,7 @@
         android:layout_marginBottom="50dp"
         android:ems="10"
         android:gravity="start|top"
-        android:hint="Enter your feedback here"
+        android:hint="Enter your report here"
         android:inputType="textMultiLine" />
 
     <TextView
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/dark_grey"
+            android:backgroundTint="@color/blue"
             android:textSize="16sp"
             android:text="Submit" />
     </LinearLayout>

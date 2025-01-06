@@ -30,9 +30,10 @@ public class Help extends AppCompatActivity {
             return insets;
         });
 
+        // LOAD FAQ FROM XML FILE
         LinearLayout faqLayout = findViewById(R.id.LLFaq);
-
         try {
+            // Load faq.xml from res/raw
             InputStream is = getResources().openRawResource(R.raw.faq);
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
@@ -42,6 +43,7 @@ public class Help extends AppCompatActivity {
             TextView questionView = null;
             TextView answerView = null;
 
+            // Parse XML file and add questions and answers to layout
             while (eventType != XmlPullParser.END_DOCUMENT) {
                 String name = null;
                 switch (eventType) {
@@ -55,7 +57,7 @@ public class Help extends AppCompatActivity {
                         } else if (name.equals("answer")) {
                             answerView = new TextView(this);
                             answerView.setText(parser.nextText());
-                            answerView.setPadding(15, 0, 0, 10);
+                            answerView.setPadding(15, 0, 0, 50);
                             faqLayout.addView(answerView);
                         }
                         break;
@@ -66,5 +68,6 @@ public class Help extends AppCompatActivity {
         } catch (XmlPullParserException | IOException e) {
             e.printStackTrace();
         }
+
     }
 }

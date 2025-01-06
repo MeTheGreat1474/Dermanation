@@ -14,16 +14,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 public class Report extends AppCompatActivity {
+
+    FirebaseAuth auth;
+    FirebaseUser user;
+    DatabaseReference userRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,10 @@ public class Report extends AppCompatActivity {
             return insets;
         });
 
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+
+        // Set up spinner with report options
         Spinner dropdown = findViewById(R.id.SPNOption);
         String[] items = new String[]{"Donation", "Volunteer", "Beneficiary", "Community", "Feedback"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -45,16 +50,21 @@ public class Report extends AppCompatActivity {
         Button buttonSubmit = findViewById(R.id.BtnSubmit);
         RatingBar RBRating = findViewById(R.id.RBRate);
 
+        // Set up submit button with listener for sending report to database
         buttonSubmit.setOnClickListener(v -> {
+            // Get report details
             String reportType = dropdown.getSelectedItem().toString();
             String reportContent = editTextReport.getText().toString();
             float reportRating = RBRating.getRating();
 
+
+            // Validate report content
             if (reportContent.isEmpty()) {
                 Toast.makeText(Report.this, "Please enter a report", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // Save report to database
             saveUserReport(reportType, reportContent, String.valueOf(reportRating));
             Toast.makeText(Report.this, "Report sent", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(Report.this, Report.class);
@@ -64,18 +74,24 @@ public class Report extends AppCompatActivity {
     }
 
     private void saveUserReport(String reportModule, String reportContent, String reportRating) {
-
         String userId = "your_user_id"; // Replace with actual user ID
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference userReportsRef = database.getReference("userReports");
+        DatabaseReference userReportsRef = database.getReference("Reports");
 
         String reportId = userReportsRef.child(userId).push().getKey();
 
-        UserReport report = new UserReport(reportModule, reportContent, reportRating);
+        // Get user email from Firebase Authentication
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String email = user.getEmail();
 
+        // Create the UserReport object
+        UserReport report = new UserReport(email, reportModule, reportContent, reportRating);
+
+        // Send the report to the database
         userReportsRef.child(reportId).setValue(report);
-
     }
+
+
 
 }

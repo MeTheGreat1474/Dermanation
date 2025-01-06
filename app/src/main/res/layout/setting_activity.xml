@@ -142,7 +142,7 @@
                     android:id="@+id/textView79"
                     android:layout_width="293dp"
                     android:layout_height="match_parent"
-                    android:text="Feedback"
+                    android:text="Report"
                     android:textColor="@color/black" />
 
                 <ImageView

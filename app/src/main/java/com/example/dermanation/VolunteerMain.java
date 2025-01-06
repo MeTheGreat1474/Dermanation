@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -138,6 +139,7 @@ public class VolunteerMain extends AppCompatActivity {
                 Toast.makeText(VolunteerMain.this, "Failed to fetch data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

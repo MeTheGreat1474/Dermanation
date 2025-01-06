@@ -34,7 +34,6 @@ public class DonationActivity extends AppCompatActivity {
 //        DonationRepository repository = new DonationRepository();
 //        repository.addDonation(donation);
 
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.navigation_donate);
 
@@ -53,6 +52,9 @@ public class DonationActivity extends AppCompatActivity {
                     return true;
                 } else if (itemId == R.id.navigation_profile) {
                     startActivity(new Intent(DonationActivity.this, ProfilePage.class));
+                    return true;
+                }  else if (itemId == R.id.navigation_community) {
+                    startActivity(new Intent(DonationActivity.this, Community.class));
                     return true;
                 }
                 return false;

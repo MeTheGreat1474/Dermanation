@@ -43,6 +43,10 @@ public class BottomNavigationFragment extends Fragment {
                     // Navigate to Help later replace with Settings
                     startActivity(new Intent(getActivity(), ProfilePage.class));
                     return true;
+                } else if (itemId == R.id.navigation_community) {
+                    // Navigate to Help later replace with Settings
+                    startActivity(new Intent(getActivity(), Community.class));
+                    return true;
                 }
                 return false;
             }

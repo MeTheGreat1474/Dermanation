@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Community">
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="421dp"
+        android:layout_height="85dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/banner_round_corner" />
+
+    <TextView
+        android:id="@+id/CommunitySharingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Community Sharing"
+        android:textColor="@color/bottom_nav_item_color"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/Filter"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VolunteerButton" />
+
+    <TextView
+        android:id="@+id/FilterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Filter Posts"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VolunteerButton" />
+
+    <Button
+        android:id="@+id/VolunteerButton"
+        style="@style/CustomButtonStyle"
+        android:layout_width="301dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="44dp"
+        android:text="Volunteer Opportunities >"
+        android:textColor="@color/bottom_nav_item_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CommunitySharingText" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/darker_gray"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FilterText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postRecyclerView"
+        android:layout_width="384dp"
+        android:layout_height="530dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FilterText" />
+
+    <Button
+        android:id="@+id/NewPostButton"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="143dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="+ NEW POST"
+        android:textColor="@color/pink"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@drawable/db_bottom_nav_bar"
+        android:textAlignment="center"
+        android:visibility="visible"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemIconSize="40dp"
+        app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemTextColor="@color/bottom_nav_item_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

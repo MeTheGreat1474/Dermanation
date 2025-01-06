@@ -1,26 +1,16 @@
 package com.example.dermanation;
 
-import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.LoginFilter;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,8 +33,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
-    Button button, profile_page;
-    TextView textView;
     FirebaseUser user;
     DatabaseReference userRef;
 
@@ -55,15 +43,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Check if user is logged in
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
-        TextView tvName = findViewById(R.id.TVName);
 
+        // Set user name
+        TextView tvName = findViewById(R.id.TVName);
         if (user==null) {
+            // Redirect to sign in page if user is not logged in
             Intent intent = new Intent(getApplicationContext(), SignIn.class);
             startActivity(intent);
             finish();
         } else {
+            // Fetch user data from database
             userRef = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
             userRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -76,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "User data not found!", Toast.LENGTH_SHORT).show();
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(MainActivity.this, "Failed to fetch user data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -84,44 +75,48 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
+        // Set up on click listeners for icons that bring user to respective pages
         ImageView ivSupport = findViewById(R.id.IVSupport);
         ivSupport.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Help.class);
             startActivity(intent);
         });
-
         ImageView ivVolunteer = findViewById(R.id.IVVolunteer);
         ivVolunteer.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, VolunteerMain.class);
             startActivity(intent);
         });
-
         ImageView ivProfile = findViewById(R.id.IVProfile);
         ivProfile.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ProfilePage.class);
             startActivity(intent);
         });
-
         ImageView ivDonate = findViewById(R.id.IVDonate);
         ivDonate.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, DonationActivity.class);
             startActivity(intent);
         });
+        ImageView ivCommunity = findViewById(R.id.IVCommunity);
+        ivCommunity.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, Community.class);
+            startActivity(intent);
+        });
 
-
+        // Set up card views that show stories and bring user to respective web pages on click
         stories = parseStoriesXml();
-
         LinearLayout lvStories = findViewById(R.id.LVStories);
         for (Story story : stories) {
+            // create card view for each story contained
             lvStories.addView(createCardView(story.getTitle(), story.getDescription(), story.getImageUrl(), story.getUrl()));
         }
 
+        // Set up bottom navigation view
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Switch between pages based on bottom navigation item selected
                 int itemId = item.getItemId();
                 if (itemId == R.id.navigation_home) {
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
@@ -135,16 +130,21 @@ public class MainActivity extends AppCompatActivity {
                 } else if (itemId == R.id.navigation_profile) {
                     startActivity(new Intent(MainActivity.this, ProfilePage.class));
                     return true;
+                } else if (itemId == R.id.navigation_community) {
+                    startActivity(new Intent(MainActivity.this, Community.class));
+                    return true;
                 }
                 return false;
             }
         });
     }
 
+    // Programmatically generate card view with title, description, image and website url
     private CardView createCardView(String title, String description, String imageUrl, String url) {
         LayoutInflater inflater = LayoutInflater.from(this);
         CardView cardView = (CardView) inflater.inflate(R.layout.card_view_layout, null, false);
 
+        // Set up card view with title, description, image and website url
         TextView tvTitle = cardView.findViewById(R.id.TVCardTitle);
         TextView tvDescription = cardView.findViewById(R.id.TVCardDesc);
         ImageView imgCard = cardView.findViewById(R.id.IMGCard);
@@ -152,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
         tvTitle.setText(title);
         tvDescription.setText(description);
 
+        // Set up card view layout with proper margins
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 400
@@ -159,9 +160,9 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.setMargins(0, 0, 0, 20);
         cardView.setLayoutParams(layoutParams);
 
-        imgCard.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
+        // Set up image view with proper image resource and layout
         int imageResource = getResources().getIdentifier(imageUrl, "drawable", getPackageName());
+        imgCard.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imgCard.setImageResource(imageResource);
 
         LinearLayout.LayoutParams imgLayoutParams = new LinearLayout.LayoutParams(
@@ -170,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         );
         imgCard.setLayoutParams(imgLayoutParams);
 
-        // opening chrome cause crashes idk why
+        // Set up on click listener to open website url in browser for every card view
         cardView.setOnClickListener(v -> {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(browserIntent);
@@ -179,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
         return cardView;
     }
 
+    // Parse stories from XML file and return a list of stories
     private List<Story> parseStoriesXml() {
         List<Story> stories = new ArrayList<>();
         try {

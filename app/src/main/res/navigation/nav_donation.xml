@@ -38,7 +38,12 @@
             android:id="@+id/action_donationPaymentFragment_to_donationAmountFragment"
             app:destination="@id/donationAmountFragment" />
         <action
-            android:id="@+id/action_donationPaymentFragment_to_donationMainFragment"
-            app:destination="@id/donationMainFragment" />
+            android:id="@+id/action_donationPaymentFragment_to_dashboard"
+            app:destination="@id/dashboard" />
     </fragment>
+    <activity
+        android:id="@+id/dashboard"
+        android:name="com.example.dermanation.Dashboard"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
