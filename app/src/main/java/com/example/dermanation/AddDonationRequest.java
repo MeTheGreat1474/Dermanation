@@ -72,6 +72,9 @@ public class AddDonationRequest extends AppCompatActivity {
         try {
             // convert amount to integer
             int amountInt = Integer.parseInt(amount);
+            if (amountInt <= 0) {
+                throw new NumberFormatException("Amount must be greater than zero.");
+            }
 
             // Generate unique donationId
             String donationId = UUID.randomUUID().toString();
@@ -100,7 +103,7 @@ public class AddDonationRequest extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AddDonationRequest.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddDonationRequest.this, "Error: " + e.getMessage().toString(), Toast.LENGTH_SHORT).show();
                         }
                     });
 

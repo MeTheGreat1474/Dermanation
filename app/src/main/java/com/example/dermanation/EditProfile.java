@@ -149,6 +149,28 @@ public class EditProfile extends AppCompatActivity {
                     String address = editTextAddress.getText().toString().trim();
                     String birthDate = editBirthDate.getText().toString().trim();
 
+                    // Validate inputs
+                    if (phone.isEmpty()) {
+                        editTextPhone.setError("Phone number is required");
+                        editTextPhone.requestFocus();
+                        return;
+                    }
+
+                    if (address.isEmpty()) {
+                        editTextAddress.setError("Address is required");
+                        editTextAddress.requestFocus();
+                        return;
+                    }
+                    if (birthDate.isEmpty()) {
+                        editBirthDate.setError("Birth date is required");
+                        editBirthDate.requestFocus();
+                        return;
+                    }
+                    if (radioGroupGender.getCheckedRadioButtonId() == -1) {
+                        Toast.makeText(EditProfile.this, "Please select a gender", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     // Determine selected gender
                     String gender = null;
                     if (radioButtonMale.isChecked()) {
@@ -174,6 +196,8 @@ public class EditProfile extends AppCompatActivity {
                         } else {
                             Toast.makeText(EditProfile.this, "Failed to update profile!", Toast.LENGTH_SHORT).show();
                         }
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(EditProfile.this, "Failed to update profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
                 }
             });
