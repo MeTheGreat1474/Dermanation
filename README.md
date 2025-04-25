@@ -29,7 +29,7 @@ An Android application built to support **Sustainable Development Goal 1 (No Pov
 <img src="https://github.com/user-attachments/assets/35d145b1-1469-45e8-9168-7fe0515702ba" width="200"/>
 
 ### Donate Page
-<img src="https://github.com/user-attachments/assets/35d145b1-1469-45e8-9168-7fe0515702ba" width="200"/>
+<img src="https://github.com/user-attachments/assets/baced130-11e6-4730-88c9-2ea7ff7489be" width="200"/>
 
 ### Volunteer Page
-<img src="https://github.com/user-attachments/assets/35d145b1-1469-45e8-9168-7fe0515702ba" width="200"/>
+<img src="https://github.com/user-attachments/assets/b4957e40-290a-4a49-940c-f5fe6bbbdfd8" width="200"/>
